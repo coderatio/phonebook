@@ -2,6 +2,9 @@
 Laravel + VueJS + Materialize CSS + Animate CSS Phonebook App. 
 
 A starter kit for Laravel + VueJS beginners.
+
+<img src="https://github.com/coderatio/phonebook/public/img/app.gif">
+
 # Installation
 ### Step 1
 Clone or download this repository to your machine:
