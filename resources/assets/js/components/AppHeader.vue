@@ -5,7 +5,7 @@
                 <router-link class="brand-logo" to="/"><span class="yellow-text"><b>PHONE</b></span>Book</router-link>
                 <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                 <ul id="nav-mobil" class="right hide-on-med-and-down">
-                    <li><a class="btn waves-effect waves-light yellow darken-1 black-text add-btn" @click="openAddModal()"><i class="material-icons">add</i> Add New</a></li>
+                    <li class="add-btn"><a class="btn waves-effect waves-light yellow darken-1 black-text" @click="openAddModal()"><i class="material-icons">add</i> Add New</a></li>
                     <router-link to="/" tag="li">
                         <a>Home</a>
                     </router-link>

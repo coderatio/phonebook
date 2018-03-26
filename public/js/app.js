@@ -58405,12 +58405,12 @@ var render = function() {
               attrs: { id: "nav-mobil" }
             },
             [
-              _c("li", [
+              _c("li", { staticClass: "add-btn" }, [
                 _c(
                   "a",
                   {
                     staticClass:
-                      "btn waves-effect waves-light yellow darken-1 black-text add-btn",
+                      "btn waves-effect waves-light yellow darken-1 black-text",
                     on: {
                       click: function($event) {
                         _vm.openAddModal()

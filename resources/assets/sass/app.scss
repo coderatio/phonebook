@@ -187,10 +187,15 @@ input:not([type]), input[type="text"]:not(.browser-default), input[type="passwor
   transition: transform 0.5s;
 }
 
-nav li:hover:not('.add-btn'),
+nav li:hover,
 nav li.router-link-exact-active {
   background-color: #006257;
   cursor: pointer;
+}
+
+nav li.add-btn:hover {
+  background: transparent;
+  cursor: default;
 }
 
 
