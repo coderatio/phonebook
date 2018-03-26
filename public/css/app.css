@@ -12605,6 +12605,12 @@ input {
   top: 15% !important;
 }
 
+.modal:focus,
+.modal:active {
+  outline: none;
+  border: none;
+}
+
 .modal .modal-footer {
   padding-right: 25px;
   padding-left: 25px;
@@ -12692,6 +12698,44 @@ textarea.materialize-textarea {
 
   .toast-rounded {
     border-radius: 25px;
+  }
+}
+
+.collapsible-icon {
+  position: absolute;
+  right: 17%;
+  margin-top: -20px;
+}
+
+.collapsible > li .collapsible-icon i {
+  -webkit-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: -webkit-transform 0.5s;
+  transition: -webkit-transform 0.5s;
+  transition: transform 0.5s;
+  transition: transform 0.5s, -webkit-transform 0.5s;
+}
+
+.collapsible > li.active .collapsible-icon i {
+  /* IE 9 */
+  -webkit-transform: rotate(90deg);
+  /* Safari 3-8 */
+  transform: rotate(90deg);
+  -webkit-transition: -webkit-transform 0.5s;
+  transition: -webkit-transform 0.5s;
+  transition: transform 0.5s;
+  transition: transform 0.5s, -webkit-transform 0.5s;
+}
+
+nav li:hover,
+nav li.router-link-exact-active {
+  background-color: #006257;
+  cursor: pointer;
+}
+
+@media only screen and (min-width: 601px) {
+  .collapsible-icon {
+    right: 24%;
   }
 }
 

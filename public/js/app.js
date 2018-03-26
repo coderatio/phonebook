@@ -58353,6 +58353,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     methods: {
@@ -58412,32 +58424,19 @@ var render = function() {
                 )
               ]),
               _vm._v(" "),
-              _c(
-                "li",
-                [_c("router-link", { attrs: { to: "/" } }, [_vm._v("Home")])],
-                1
-              ),
+              _c("router-link", { attrs: { to: "/", tag: "li" } }, [
+                _c("a", [_vm._v("Home")])
+              ]),
               _vm._v(" "),
-              _c(
-                "li",
-                [
-                  _c("router-link", { attrs: { to: "/phonebook" } }, [
-                    _vm._v("Phonebook")
-                  ])
-                ],
-                1
-              ),
+              _c("router-link", { attrs: { to: "/phonebook", tag: "li" } }, [
+                _c("a", [_vm._v("Phonebook")])
+              ]),
               _vm._v(" "),
-              _c(
-                "li",
-                [
-                  _c("router-link", { attrs: { to: "/about" } }, [
-                    _vm._v("About")
-                  ])
-                ],
-                1
-              )
-            ]
+              _c("router-link", { attrs: { to: "/about", tag: "li" } }, [
+                _c("a", [_vm._v("About")])
+              ])
+            ],
+            1
           ),
           _vm._v(" "),
           _c("ul", { staticClass: "right show-on-medium-and-down" }, [
@@ -58462,31 +58461,26 @@ var render = function() {
       )
     ]),
     _vm._v(" "),
-    _c("ul", { staticClass: "sidenav", attrs: { id: "nav-mobile" } }, [
-      _vm._m(1),
-      _vm._v(" "),
-      _c(
-        "li",
-        [_c("router-link", { attrs: { to: "/" } }, [_vm._v("Home")])],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "li",
-        [
-          _c("router-link", { attrs: { to: "/phonebook" } }, [
-            _vm._v("Phonebook")
-          ])
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "li",
-        [_c("router-link", { attrs: { to: "/about" } }, [_vm._v("About")])],
-        1
-      )
-    ])
+    _c(
+      "ul",
+      { staticClass: "sidenav", attrs: { id: "nav-mobile" } },
+      [
+        _vm._m(1),
+        _vm._v(" "),
+        _c("router-link", { attrs: { to: "/", tag: "li" } }, [
+          _c("a", [_vm._v("Home")])
+        ]),
+        _vm._v(" "),
+        _c("router-link", { attrs: { to: "/phonebook", tag: "li" } }, [
+          _c("a", [_vm._v("Phonebook")])
+        ]),
+        _vm._v(" "),
+        _c("router-link", { attrs: { to: "/about", tag: "li" } }, [
+          _c("a", [_vm._v("About")])
+        ])
+      ],
+      1
+    )
   ])
 }
 var staticRenderFns = [
@@ -58797,6 +58791,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 
 var Add = __webpack_require__(4);
@@ -58880,14 +58878,16 @@ var Pagination = __webpack_require__(57);
             if (typeof page === 'undefined') {
                 page = 1;
             }
-
+            this.homeSpinner = true;
             // Using vue-resource as an example
             axios.post('/get-phonebooks?page=' + page, {
                 perPage: this.searchData.perPage
             }).then(function (response) {
+                _this3.homeSpinner = false;
                 _this3.lists = _this3.tempData = response.data;
                 return response.data;
             }).catch(function (error) {
+                _this3.homeSpinner = false;
                 console.log(error);
             });
         },
@@ -59933,7 +59933,7 @@ var render = function() {
           _c("div", { staticClass: "card search-card puls" }, [
             _c("div", { staticClass: "card-content" }, [
               _c("div", { staticClass: "row" }, [
-                _c("div", { staticClass: "col m10 s8" }, [
+                _c("div", { staticClass: "col l10 s8" }, [
                   _c("div", {}, [
                     _c("input", {
                       directives: [
@@ -59959,7 +59959,7 @@ var render = function() {
                   ])
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "col m2 s4" }, [
+                _c("div", { staticClass: "col l2 s4" }, [
                   _c(
                     "select",
                     {
@@ -60046,8 +60046,9 @@ var render = function() {
                                 _vm._v(
                                   "\n                                " +
                                     _vm._s(item.name) +
-                                    "\n                            "
-                                )
+                                    "\n                                "
+                                ),
+                                _vm._m(1, true)
                               ]),
                               _vm._v(" "),
                               _c("div", { staticClass: "collapsible-body" }, [
@@ -60194,6 +60195,16 @@ var staticRenderFns = [
             _c("div", { staticClass: "circle" })
           ])
         ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "collapsible-icon" }, [
+      _c("i", { staticClass: "material-icons right" }, [
+        _vm._v("chevron_right")
       ])
     ])
   }

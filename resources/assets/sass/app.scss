@@ -79,6 +79,12 @@ input {
   top: 15% !important;
 }
 
+.modal:focus,
+.modal:active {
+  outline: none;
+  border: none;
+}
+
 .modal .modal-footer {
   padding-right: 25px;
   padding-left: 25px;
@@ -164,4 +170,53 @@ input:not([type]), input[type="text"]:not(.browser-default), input[type="passwor
     -moz-border-radius: 25px;
     border-radius: 25px;
   }
+}
+
+.collapsible-icon {
+  position: absolute;
+  right: 17%;
+  margin-top: -20px;
+}
+
+.collapsible > li .collapsible-icon i {
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+  transition: transform 0.5s;
+}
+
+.collapsible > li.active .collapsible-icon i{
+  -ms-transform: rotate(90deg); /* IE 9 */
+  -webkit-transform: rotate(90deg); /* Safari 3-8 */
+  transform: rotate(90deg);
+  transition: transform 0.5s;
+}
+
+nav li:hover,
+nav li.router-link-exact-active {
+  background-color: #006257;
+  cursor: pointer;
+}
+
+
+@media #{$small-and-down} {
+  // styles for small screens and down
+}
+@media #{$medium-and-up} {
+  // styles for medium screens and larger
+  .collapsible-icon {
+    right: 24%;
+  }
+}
+@media #{$medium-and-down} {
+  // styles for medium screens and down
+}
+@media #{$large-and-up} {
+  // styles for large screens and up
+
+}
+@media #{$extra-large-and-up} {
+  // styles for extra large screens and up
 }

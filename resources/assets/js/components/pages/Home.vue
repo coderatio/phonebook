@@ -10,12 +10,12 @@
                    <div class="card search-card puls">
                        <div class="card-content">
                            <div class="row">
-                               <div class="col m10 s8">
+                               <div class="col l10 s8">
                                    <div class="">
                                        <input class="input" type="text" placeholder="Search phonebook" v-model="searchQuery">
                                    </div>
                                </div>
-                               <div class="col m2 s4">
+                               <div class="col l2 s4">
                                    <select class="pb-select" v-model="filterQuery">
                                        <option value="" disabled selected>Show..</option>
                                        <option value="4">Default</option>
@@ -52,7 +52,11 @@
                                <div class="collapsible-header">
                                    <i class="material-icons teal-text pulse">account_circle</i>
                                    {{ item.name }}
+                                   <div class="collapsible-icon">
+                                       <i class="material-icons right">chevron_right</i>
+                                   </div>
                                </div>
+
                                <div class="collapsible-body">
                                <span class="badge">
                                    <a @click="openDeleteModal(key, item.id)" class="waves-effect waves-red red-text"><i class="material-icons">delete</i></a>
@@ -168,16 +172,18 @@
                 if (typeof page === 'undefined') {
                     page = 1;
                 }
-
+                this.homeSpinner = true;
                 // Using vue-resource as an example
                 axios.post('/get-phonebooks?page=' + page, {
                     perPage: this.searchData.perPage
                 })
                     .then(response => {
+                        this.homeSpinner = false;
                         this.lists = this.tempData = response.data;
                         return response.data;
                     })
                     .catch(error => {
+                        this.homeSpinner = false;
                         console.log(error);
                     });
             },
