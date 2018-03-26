@@ -12,7 +12,7 @@ Clone or download this repository to your machine:
 
 `npm install` to install all npm packages which vue is among.
 
-Create your database, rename `.env.example` to `.env` then, change `DB_DATABASE` variable to your database.
+Create your database, rename `.env.example` to `.env` then, change `DB_DATABASE` value to your database.
 
 `php artisan migrate` to create our phonebook table
 
