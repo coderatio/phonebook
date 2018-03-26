@@ -52,11 +52,8 @@
                                <div class="collapsible-header">
                                    <i class="material-icons teal-text pulse">account_circle</i>
                                    {{ item.name }}
-                                   <div class="collapsible-icon">
-                                       <i class="material-icons right">chevron_right</i>
-                                   </div>
+                                   <span class="badge"><i class="material-icons collapsible-icon">chevron_right</i></span>
                                </div>
-
                                <div class="collapsible-body">
                                <span class="badge">
                                    <a @click="openDeleteModal(key, item.id)" class="waves-effect waves-red red-text"><i class="material-icons">delete</i></a>

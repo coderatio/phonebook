@@ -12701,22 +12701,16 @@ textarea.materialize-textarea {
   }
 }
 
-.collapsible-icon {
-  position: absolute;
-  right: 17%;
-  margin-top: -20px;
-}
-
-.collapsible > li .collapsible-icon i {
+.collapsible > li .collapsible-header i.collapsible-icon {
   -webkit-transform: rotate(0deg);
-  transform: rotate(0deg);
+          transform: rotate(0deg);
   -webkit-transition: -webkit-transform 0.5s;
   transition: -webkit-transform 0.5s;
   transition: transform 0.5s;
   transition: transform 0.5s, -webkit-transform 0.5s;
 }
 
-.collapsible > li.active .collapsible-icon i {
+.collapsible > li.active .collapsible-header i.collapsible-icon {
   /* IE 9 */
   -webkit-transform: rotate(90deg);
   /* Safari 3-8 */
@@ -12727,15 +12721,9 @@ textarea.materialize-textarea {
   transition: transform 0.5s, -webkit-transform 0.5s;
 }
 
-nav li:hover,
+nav li:hover:not('.add-btn'),
 nav li.router-link-exact-active {
   background-color: #006257;
   cursor: pointer;
-}
-
-@media only screen and (min-width: 601px) {
-  .collapsible-icon {
-    right: 24%;
-  }
 }
 

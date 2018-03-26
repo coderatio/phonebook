@@ -172,14 +172,7 @@ input:not([type]), input[type="text"]:not(.browser-default), input[type="passwor
   }
 }
 
-.collapsible-icon {
-  position: absolute;
-  right: 17%;
-  margin-top: -20px;
-}
-
-.collapsible > li .collapsible-icon i {
-  -webkit-transform: rotate(0deg);
+.collapsible > li .collapsible-header i.collapsible-icon {
   -moz-transform: rotate(0deg);
   -ms-transform: rotate(0deg);
   -o-transform: rotate(0deg);
@@ -187,14 +180,14 @@ input:not([type]), input[type="text"]:not(.browser-default), input[type="passwor
   transition: transform 0.5s;
 }
 
-.collapsible > li.active .collapsible-icon i{
+.collapsible > li.active .collapsible-header i.collapsible-icon{
   -ms-transform: rotate(90deg); /* IE 9 */
   -webkit-transform: rotate(90deg); /* Safari 3-8 */
   transform: rotate(90deg);
   transition: transform 0.5s;
 }
 
-nav li:hover,
+nav li:hover:not('.add-btn'),
 nav li.router-link-exact-active {
   background-color: #006257;
   cursor: pointer;
@@ -206,9 +199,7 @@ nav li.router-link-exact-active {
 }
 @media #{$medium-and-up} {
   // styles for medium screens and larger
-  .collapsible-icon {
-    right: 24%;
-  }
+
 }
 @media #{$medium-and-down} {
   // styles for medium screens and down

@@ -58410,7 +58410,7 @@ var render = function() {
                   "a",
                   {
                     staticClass:
-                      "btn waves-effect waves-light yellow darken-1 black-text",
+                      "btn waves-effect waves-light yellow darken-1 black-text add-btn",
                     on: {
                       click: function($event) {
                         _vm.openAddModal()
@@ -58702,9 +58702,6 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
 //
 //
 //
@@ -60202,8 +60199,8 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "collapsible-icon" }, [
-      _c("i", { staticClass: "material-icons right" }, [
+    return _c("span", { staticClass: "badge" }, [
+      _c("i", { staticClass: "material-icons collapsible-icon" }, [
         _vm._v("chevron_right")
       ])
     ])
