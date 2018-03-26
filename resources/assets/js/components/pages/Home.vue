@@ -187,7 +187,7 @@
 
             openAddModal: function () {
                 this.activateModal();
-                $('#addModal').modal('open');
+                $('#addModal').modal('open').addClass('animated fadeIn');
             },
 
             close() {
@@ -200,13 +200,13 @@
                 this.$children[2].list = this.tempData.data[key];
                 this.$children[2].key = key;
                 this.activateModal();
-                $('#deleteModal').modal('open');
+                $('#deleteModal').modal('open').addClass('animated bounceIn');
             },
 
             updatePhonebook(key) {
                 this.$children[1].list = this.tempData.data[key];
                 this.activateModal();
-                $('#updateModal').modal('open');
+                $('#updateModal').modal('open').addClass('animated fadeIn');
             },
 
             activateCollapsible() {

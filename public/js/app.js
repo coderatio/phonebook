@@ -58892,7 +58892,7 @@ var Pagination = __webpack_require__(57);
 
         openAddModal: function openAddModal() {
             this.activateModal();
-            $('#addModal').modal('open');
+            $('#addModal').modal('open').addClass('animated fadeIn');
         },
 
         close: function close() {
@@ -58904,12 +58904,12 @@ var Pagination = __webpack_require__(57);
             this.$children[2].list = this.tempData.data[key];
             this.$children[2].key = key;
             this.activateModal();
-            $('#deleteModal').modal('open');
+            $('#deleteModal').modal('open').addClass('animated bounceIn');
         },
         updatePhonebook: function updatePhonebook(key) {
             this.$children[1].list = this.tempData.data[key];
             this.activateModal();
-            $('#updateModal').modal('open');
+            $('#updateModal').modal('open').addClass('animated fadeIn');
         },
         activateCollapsible: function activateCollapsible() {
             $('.collapsible').collapsible();
@@ -59700,12 +59700,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this.deleteSpinner = false;
                 _this.$parent.lists.data.splice(key, 1);
                 _this.message = response.data.message;
-                toast('Phonebook deleted successfully');
+                toast(_this.message);
                 console.log(_this.message);
             }).catch(function (error) {
                 _this.deleteSpinner = false;
-                _this.message = error.response.data.errors;
-                _this.errors = error.response.data.errors;
+                _this.message = _this.errors = error.response.data.errors;
+                console.log(_this.errors);
             });
         }
     }
@@ -59721,10 +59721,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    {
-      staticClass: "modal animated bounceIn small",
-      attrs: { id: "deleteModal" }
-    },
+    { staticClass: "modal small", attrs: { id: "deleteModal" } },
     [
       !_vm.deleteSpinner
         ? _c("div", { staticClass: "modal-content center" }, [
@@ -59762,7 +59759,10 @@ var render = function() {
                 _c("i", { staticClass: "material-icons left" }, [
                   _vm._v("done")
                 ]),
-                _vm._v(" Yes, Delete")
+                _vm._v(" Yes"),
+                _c("span", { staticClass: "hide-on-small-and-down" }, [
+                  _vm._v(", Delete")
+                ])
               ]
             ),
             _vm._v(" "),
@@ -59797,7 +59797,10 @@ var staticRenderFns = [
       },
       [
         _c("i", { staticClass: "material-icons left" }, [_vm._v("clear")]),
-        _vm._v(" No, Cancel")
+        _vm._v(" No"),
+        _c("span", { staticClass: "hide-on-small-and-down" }, [
+          _vm._v(", Cancel")
+        ])
       ]
     )
   }
