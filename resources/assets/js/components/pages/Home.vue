@@ -48,7 +48,7 @@
                    <!--Not addLoading-->
                    <div v-if="!homeSpinner">
                        <ul class="collapsible popout" v-if="!noResults">
-                           <li v-for="item, key in tempData.data" @click="activateCollapsible()">
+                           <li v-for="(item, key) in tempData.data" @click="activateCollapsible()">
                                <div class="collapsible-header">
                                    <i class="material-icons teal-text pulse">account_circle</i>
                                    {{ item.name }}
