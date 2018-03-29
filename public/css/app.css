@@ -12702,8 +12702,8 @@ textarea.materialize-textarea {
 }
 
 .collapsible > li .collapsible-header i.collapsible-icon {
-  -webkit-transform: rotate(0deg);
-          transform: rotate(0deg);
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
   -webkit-transition: -webkit-transform 0.5s;
   transition: -webkit-transform 0.5s;
   transition: transform 0.5s;
@@ -12712,9 +12712,9 @@ textarea.materialize-textarea {
 
 .collapsible > li.active .collapsible-header i.collapsible-icon {
   /* IE 9 */
-  -webkit-transform: rotate(90deg);
+  -webkit-transform: rotate(270deg);
   /* Safari 3-8 */
-  transform: rotate(90deg);
+  transform: rotate(270deg);
   -webkit-transition: -webkit-transform 0.5s;
   transition: -webkit-transform 0.5s;
   transition: transform 0.5s;

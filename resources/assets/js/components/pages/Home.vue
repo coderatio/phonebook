@@ -10,19 +10,19 @@
                    <div class="card search-card puls">
                        <div class="card-content">
                            <div class="row">
-                               <div class="col l10 s8">
+                               <div class="col l9 s8">
                                    <div class="">
-                                       <input class="input" type="text" placeholder="Search phonebook" v-model="searchQuery">
+                                       <input class="input" type="text" placeholder="Search" v-model="searchQuery">
                                    </div>
                                </div>
-                               <div class="col l2 s4">
+                               <div class="col l3 s4">
                                    <select class="pb-select" v-model="filterQuery">
-                                       <option value="" disabled selected>Show..</option>
-                                       <option value="4">Default</option>
-                                       <option value="10">10</option>
-                                       <option value="25">25</option>
-                                       <option value="50">50</option>
-                                       <option value="100">100</option>
+                                       <option value="" disabled selected>Filter..</option>
+                                       <option value="5">Show 5</option>
+                                       <option value="10">Show 10</option>
+                                       <option value="25">Show 25</option>
+                                       <option value="50">Show 50</option>
+                                       <option value="100">Show 100</option>
                                    </select>
                                </div>
 
@@ -48,7 +48,7 @@
                    <!--Not addLoading-->
                    <div v-if="!homeSpinner">
                        <ul class="collapsible popout" v-if="!noResults">
-                           <li v-for="(item, key) in tempData.data" @click="activateCollapsible()">
+                           <li v-for="(item, key) in tempData.data" @click="activateCollapsible">
                                <div class="collapsible-header">
                                    <i class="material-icons teal-text pulse">account_circle</i>
                                    {{ item.name }}
@@ -106,14 +106,14 @@
                 errors: {},
                 tempData: {},
                 searchQuery: '',
-                filterQuery: 4,
+                filterQuery: appItemsPerPage,
                 homeSpinner: false,
                 deleteActive: '',
                 noResults: false,
                 noResultMsg: 'No phonebooks available..',
                 searchData: {
                     query: '',
-                    perPage: 4
+                    perPage: null
                 }
             }
         },
@@ -161,9 +161,19 @@
         },
         mounted() {
             this.activateSelect();
+            //this.test();
             this.getResults();
         },
         methods: {
+
+            test() {
+                return axios.post('/test')
+                    .then(response => {
+                        //this.filterQuery = response.data;
+                        console.log(response.data)
+                    })
+                    .catch(error => console.log(error));
+            },
 
             getResults(page) {
                 if (typeof page === 'undefined') {
@@ -177,7 +187,8 @@
                     .then(response => {
                         this.homeSpinner = false;
                         this.lists = this.tempData = response.data;
-                        return response.data;
+                        //console.log(response.data.itemse);
+                        //return this.lists;
                     })
                     .catch(error => {
                         this.homeSpinner = false;

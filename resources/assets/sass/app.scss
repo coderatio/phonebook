@@ -173,17 +173,17 @@ input:not([type]), input[type="text"]:not(.browser-default), input[type="passwor
 }
 
 .collapsible > li .collapsible-header i.collapsible-icon {
-  -moz-transform: rotate(0deg);
-  -ms-transform: rotate(0deg);
-  -o-transform: rotate(0deg);
-  transform: rotate(0deg);
+  -moz-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  transform: rotate(90deg);
   transition: transform 0.5s;
 }
 
 .collapsible > li.active .collapsible-header i.collapsible-icon{
-  -ms-transform: rotate(90deg); /* IE 9 */
-  -webkit-transform: rotate(90deg); /* Safari 3-8 */
-  transform: rotate(90deg);
+  -ms-transform: rotate(270deg); /* IE 9 */
+  -webkit-transform: rotate(270deg); /* Safari 3-8 */
+  transform: rotate(270deg);
   transition: transform 0.5s;
 }
 

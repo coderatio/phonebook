@@ -37,7 +37,7 @@
         },
         methods: {
             close() {
-                $('.collapsible').collapsible('close', 0);
+                $('.collapsible').collapsible('close');
                 $('#deleteModal').modal('close');
                 this.$emit('closeModal');
             },
@@ -50,6 +50,7 @@
                         this.$parent.lists.data.splice(key,1);
                         this.message = response.data.message;
                         toast(this.message);
+                        this.$parent.getResults();
                         console.log(this.message);
                     })
                     .catch((error) => {

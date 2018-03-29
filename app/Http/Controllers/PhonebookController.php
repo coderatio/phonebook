@@ -55,6 +55,7 @@ class PhonebookController extends Controller
         if ($pb) {
             $this->response['message'] = 'New phonebook created';
             $this->response['status'] = true;
+            $this->response['perPage'] = settings('per_page');
             $this->response['newItem'] = $pb;
 
         }
@@ -66,9 +67,12 @@ class PhonebookController extends Controller
 
     public function getData(Request $request)
     {
-        $books = $this->pb::orderBy('name', 'asc')->paginate($request->perPage);
+        $perPage = settings('per_page', $request->perPage);
 
-        return response()->json($books);
+        $phoneBooks = $this->pb::orderBy('name', 'asc')->paginate($perPage);
+        $this->response['perPage'] = intval($perPage);
+
+        return response()->json($phoneBooks);
     }
 
     /**
@@ -80,7 +84,7 @@ class PhonebookController extends Controller
     public function getSearch(Request $request)
     {
         $searchValue = $request->searchQuery;
-        $perPage = $request->perPage;
+        $perPage = settings('per_page', $request->perPage);
 
         $books = $this->pb::orderBy('name', 'asc')
             ->where("name", 'LIKE', "%$searchValue%")
@@ -133,6 +137,7 @@ class PhonebookController extends Controller
         if ($pb->save()) {
             $this->response['message'] = "{$pb->name}'s details updated succesfully.";
             $this->response['status'] = true;
+            $this->response['perPage'] = settings('per_page');
             $this->response['newItem'] = $pb;
         }
 
@@ -158,6 +163,11 @@ class PhonebookController extends Controller
         $this->pb::where('id', $phonebook->id)->delete();
 
         return response($this->response);
+    }
+
+    public function test()
+    {
+        return settings();
     }
 
 }

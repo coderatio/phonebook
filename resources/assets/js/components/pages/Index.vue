@@ -6,7 +6,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col s12 center-block center">
-                                <img src="/public/img/phonebook-icon.png" alt="" style="width: 200px; display: block; margin: 20px auto">
+                                <img src="/public/img/address-book-icon.png" alt="" style="width: 150px; display: block; margin: 40px auto">
                             </div>
                             <div class="col l8 s10 offset-s1  m10 offset-m1 offset-l2 center">
                                 <p>

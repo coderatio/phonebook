@@ -16,7 +16,7 @@ Route::get('/{vue_capture?}', function () {
 })->where('vue_capture', '[\/\w\.-]*');
 
 Route::resource('phonebook', 'PhonebookController');
-Route::get('test-notify', 'JoliNotifController@showNotif');
+Route::post('test', 'PhonebookController@test');
 Route::post('get-phonebooks', 'PhonebookController@getData');
 //Route::post('get-pagination', 'PhonebookController@getBooks');
 Route::post('get-search', 'PhonebookController@getSearch');

@@ -31,6 +31,8 @@
         function errorToast(message, classess = 'toast-rounded error') {
             return M.toast({html: `<i class="material-icons circle orange left" style="padding: 5px;">error</i> ${message}`, classes: classess});
         }
+        const appItemsPerPage = '{{ settings('per_page') }}';
+
     </script>
     <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
 </body>

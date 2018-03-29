@@ -62,6 +62,7 @@
         methods: {
             close() {
                 this.errors = {};
+                $('#addModal').modal('close');
                 this.$emit('closeModal');
             },
             save() {
@@ -73,7 +74,6 @@
                         this.message = true;
                         this.addLoading = false;
                         this.errors = {};
-                        this.alertClass = 'is-success';
                         this.messageTitle = response.data.message;
                         toast(this.messageTitle);
                         /**
@@ -90,10 +90,13 @@
                             }
                         });
 
+                        // Clear input fields
+                        this.list = {};
+                        this.close();
                         this.$parent.getResults();
 
-                        // Clear input fields
-                        this.list = '';
+
+
                     })
                     .catch((error) => {
                         this.message = true;

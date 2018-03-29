@@ -5,7 +5,7 @@
                 <router-link class="brand-logo" to="/"><span class="yellow-text"><b>PHONE</b></span>Book</router-link>
                 <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                 <ul id="nav-mobil" class="right hide-on-med-and-down">
-                    <li class="add-btn"><a class="btn waves-effect waves-light yellow darken-1 black-text" @click="openAddModal()"><i class="material-icons">add</i> Add New</a></li>
+                    <li class="add-btn"><a class="btn waves-effect pulse waves-light yellow darken-1 black-text" @click="openAddModal()"><i class="material-icons">add</i> Add New</a></li>
                     <router-link to="/" tag="li">
                         <a>Home</a>
                     </router-link>
@@ -15,9 +15,12 @@
                     <router-link to="/about" tag="li">
                         <a>About</a>
                     </router-link>
+                    <router-link to="/settings" tag="li">
+                        <a><i class="material-icons">settings</i></a>
+                    </router-link>
                 </ul>
                 <ul class="right show-on-medium-and-down">
-                    <li>
+                    <li class="add-btn">
                         <a class="btn pulse waves-effect waves-light yellow darken-1 black-text hide-on-med-and-up" @click="openAddModal()"><i class="material-icons">add</i></a>
                     </li>
                 </ul>

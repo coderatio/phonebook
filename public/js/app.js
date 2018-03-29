@@ -58365,6 +58365,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     methods: {
@@ -58410,7 +58413,7 @@ var render = function() {
                   "a",
                   {
                     staticClass:
-                      "btn waves-effect waves-light yellow darken-1 black-text",
+                      "btn waves-effect pulse waves-light yellow darken-1 black-text",
                     on: {
                       click: function($event) {
                         _vm.openAddModal()
@@ -58434,13 +58437,21 @@ var render = function() {
               _vm._v(" "),
               _c("router-link", { attrs: { to: "/about", tag: "li" } }, [
                 _c("a", [_vm._v("About")])
+              ]),
+              _vm._v(" "),
+              _c("router-link", { attrs: { to: "/settings", tag: "li" } }, [
+                _c("a", [
+                  _c("i", { staticClass: "material-icons" }, [
+                    _vm._v("settings")
+                  ])
+                ])
               ])
             ],
             1
           ),
           _vm._v(" "),
           _c("ul", { staticClass: "right show-on-medium-and-down" }, [
-            _c("li", [
+            _c("li", { staticClass: "add-btn" }, [
               _c(
                 "a",
                 {
@@ -58810,14 +58821,14 @@ var Pagination = __webpack_require__(57);
             errors: {},
             tempData: {},
             searchQuery: '',
-            filterQuery: 4,
+            filterQuery: appItemsPerPage,
             homeSpinner: false,
             deleteActive: '',
             noResults: false,
             noResultMsg: 'No phonebooks available..',
             searchData: {
                 query: '',
-                perPage: 4
+                perPage: null
             }
         };
     },
@@ -58865,10 +58876,19 @@ var Pagination = __webpack_require__(57);
     },
     mounted: function mounted() {
         this.activateSelect();
+        //this.test();
         this.getResults();
     },
 
     methods: {
+        test: function test() {
+            return axios.post('/test').then(function (response) {
+                //this.filterQuery = response.data;
+                console.log(response.data);
+            }).catch(function (error) {
+                return console.log(error);
+            });
+        },
         getResults: function getResults(page) {
             var _this3 = this;
 
@@ -58882,7 +58902,8 @@ var Pagination = __webpack_require__(57);
             }).then(function (response) {
                 _this3.homeSpinner = false;
                 _this3.lists = _this3.tempData = response.data;
-                return response.data;
+                //console.log(response.data.itemse);
+                //return this.lists;
             }).catch(function (error) {
                 _this3.homeSpinner = false;
                 console.log(error);
@@ -58994,6 +59015,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     methods: {
         close: function close() {
             this.errors = {};
+            $('#addModal').modal('close');
             this.$emit('closeModal');
         },
         save: function save() {
@@ -59006,7 +59028,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this.message = true;
                 _this.addLoading = false;
                 _this.errors = {};
-                _this.alertClass = 'is-success';
                 _this.messageTitle = response.data.message;
                 toast(_this.messageTitle);
                 /**
@@ -59023,10 +59044,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     }
                 });
 
-                _this.$parent.getResults();
-
                 // Clear input fields
-                _this.list = '';
+                _this.list = {};
+                _this.close();
+                _this.$parent.getResults();
             }).catch(function (error) {
                 _this.message = true;
                 _this.addLoading = !_this.addLoading;
@@ -59687,7 +59708,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         close: function close() {
-            $('.collapsible').collapsible('close', 0);
+            $('.collapsible').collapsible('close');
             $('#deleteModal').modal('close');
             this.$emit('closeModal');
         },
@@ -59701,6 +59722,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this.$parent.lists.data.splice(key, 1);
                 _this.message = response.data.message;
                 toast(_this.message);
+                _this.$parent.getResults();
                 console.log(_this.message);
             }).catch(function (error) {
                 _this.deleteSpinner = false;
@@ -59933,7 +59955,7 @@ var render = function() {
           _c("div", { staticClass: "card search-card puls" }, [
             _c("div", { staticClass: "card-content" }, [
               _c("div", { staticClass: "row" }, [
-                _c("div", { staticClass: "col l10 s8" }, [
+                _c("div", { staticClass: "col l9 s8" }, [
                   _c("div", {}, [
                     _c("input", {
                       directives: [
@@ -59945,7 +59967,7 @@ var render = function() {
                         }
                       ],
                       staticClass: "input",
-                      attrs: { type: "text", placeholder: "Search phonebook" },
+                      attrs: { type: "text", placeholder: "Search" },
                       domProps: { value: _vm.searchQuery },
                       on: {
                         input: function($event) {
@@ -59959,7 +59981,7 @@ var render = function() {
                   ])
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "col l2 s4" }, [
+                _c("div", { staticClass: "col l3 s4" }, [
                   _c(
                     "select",
                     {
@@ -59992,20 +60014,28 @@ var render = function() {
                       _c(
                         "option",
                         { attrs: { value: "", disabled: "", selected: "" } },
-                        [_vm._v("Show..")]
+                        [_vm._v("Filter..")]
                       ),
                       _vm._v(" "),
-                      _c("option", { attrs: { value: "4" } }, [
-                        _vm._v("Default")
+                      _c("option", { attrs: { value: "5" } }, [
+                        _vm._v("Show 5")
                       ]),
                       _vm._v(" "),
-                      _c("option", { attrs: { value: "10" } }, [_vm._v("10")]),
+                      _c("option", { attrs: { value: "10" } }, [
+                        _vm._v("Show 10")
+                      ]),
                       _vm._v(" "),
-                      _c("option", { attrs: { value: "25" } }, [_vm._v("25")]),
+                      _c("option", { attrs: { value: "25" } }, [
+                        _vm._v("Show 25")
+                      ]),
                       _vm._v(" "),
-                      _c("option", { attrs: { value: "50" } }, [_vm._v("50")]),
+                      _c("option", { attrs: { value: "50" } }, [
+                        _vm._v("Show 50")
+                      ]),
                       _vm._v(" "),
-                      _c("option", { attrs: { value: "100" } }, [_vm._v("100")])
+                      _c("option", { attrs: { value: "100" } }, [
+                        _vm._v("Show 100")
+                      ])
                     ]
                   )
                 ])
@@ -60026,13 +60056,7 @@ var render = function() {
                         _vm._l(_vm.tempData.data, function(item, key) {
                           return _c(
                             "li",
-                            {
-                              on: {
-                                click: function($event) {
-                                  _vm.activateCollapsible()
-                                }
-                              }
-                            },
+                            { on: { click: _vm.activateCollapsible } },
                             [
                               _c("div", { staticClass: "collapsible-header" }, [
                                 _c(
@@ -60726,8 +60750,8 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "col s12 center-block center" }, [
       _c("img", {
-        staticStyle: { width: "200px", display: "block", margin: "20px auto" },
-        attrs: { src: "/public/img/phonebook-icon.png", alt: "" }
+        staticStyle: { width: "150px", display: "block", margin: "40px auto" },
+        attrs: { src: "/public/img/address-book-icon.png", alt: "" }
       })
     ])
   },
